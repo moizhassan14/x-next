@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className='text-red-500'>home page</div>
+    <div> post page</div>
   )
 }
