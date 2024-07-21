@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import News from "@/components/News";
-import SessionWrapper from "@/components/SessionWrapper";
+import { AuthContextProvider } from "./context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,11 +11,11 @@ export const metadata = {
   description: "A Clone of X website using NEXT.Js and Tailwind.css ",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
-    <SessionWrapper>
-      <html lang="en">
-        <body className={inter.className}>
+    <html lang="en">
+      <body className={inter.className}>
+        <AuthContextProvider>
           <div className="flex justify-between max-w-6xl mx-auto">
             <div className="hidden sm:inline border-r h-screen">
               <Sidebar />
@@ -32,8 +32,8 @@ export default function RootLayout({ children }) {
               <News />
             </div>
           </div>
-        </body>
-      </html>
-    </SessionWrapper>
+        </AuthContextProvider>
+      </body>
+    </html>
   );
 }
